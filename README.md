@@ -7,6 +7,7 @@ Go SaaS Framework - Golang In-Memory Authenticator Implementation
 package main
 
 import (
+    "time"
     "os"
     "sync"
     "github.com/go-saas/go-saas-authenticator-in-memory"
