@@ -29,10 +29,10 @@ func main() {
         },
         Users: []*go_saas_model.User{
             {
-            Model:    go_saas_model.Model{Id: 1},
-            Email:    &email,
-            Password: &password,
-            RWMutex:  new(sync.RWMutex),
+                Model:    go_saas_model.Model{Id: 1},
+                Email:    &email,
+                Password: &password,
+                RWMutex:  new(sync.RWMutex),
             },
         },
         RWMutex: new(sync.RWMutex),
