@@ -7,13 +7,17 @@ Go SaaS Framework - Golang In-Memory Authenticator Implementation
 package main
 
 import (
-    "sync"
+    "os"
+"sync"
     "github.com/go-saas/go-saas-authenticator-in-memory"
     "github.com/go-saas/go-saas/authenticator/basic"
     "github.com/go-saas/go-saas/model"
 )
 
 func main() {
+    email := os.Getenv("AUTH_EMAIL")
+    password := os.Getenv("AUTH_PASSWORD")
+
     authenticator := &go_saas_authenticator_in_memory.Authenticator{
         BaseAuthenticator: &go_saas_authenticator_basic.Authenticator{
             Realm:       "auth",
@@ -26,8 +30,8 @@ func main() {
         Users: []*go_saas_model.User{
             {
             Model:    go_saas_model.Model{Id: 1},
-            Email:    pointer.StringPtr(os.Getenv("API_AUTH_EMAIL")),
-            Password: pointer.StringPtr(os.Getenv("API_AUTH_PASSWORD")),
+            Email:    &email,
+            Password: &password,
             RWMutex:  new(sync.RWMutex),
             },
         },
