@@ -1,4 +1,4 @@
-module github.com/finsmart-gmbh/user-authenticator
+module github.com/go-saas/go-saas-authenticator-in-memory
 
 go 1.14
 

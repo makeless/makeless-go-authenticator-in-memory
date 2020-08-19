@@ -1,4 +1,4 @@
-package authenticator
+package go_saas_authenticator_in_memory
 
 import (
 	"time"

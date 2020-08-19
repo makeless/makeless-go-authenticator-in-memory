@@ -14,6 +14,6 @@ steps:
       - make linter
 
   - name: test
-    image: golang:1.14
+    image: golang:1.15
     commands:
       - make test-coverage
