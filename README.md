@@ -8,7 +8,7 @@ package main
 
 import (
     "os"
-"sync"
+    "sync"
     "github.com/go-saas/go-saas-authenticator-in-memory"
     "github.com/go-saas/go-saas/authenticator/basic"
     "github.com/go-saas/go-saas/model"
