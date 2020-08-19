@@ -15,23 +15,23 @@ import (
 
 func main() {
     authenticator := &go_saas_authenticator_in_memory.Authenticator{
-		BaseAuthenticator: &go_saas_authenticator_basic.Authenticator{
-			Realm:       "auth",
-			Key:         os.Getenv("JWT_KEY"),
-			Timeout:     time.Hour,
-			MaxRefresh:  time.Hour,
-			IdentityKey: "id",
-			RWMutex:     new(sync.RWMutex),
-		},
-		Users: []*go_saas_model.User{
-			{
-				Model:    go_saas_model.Model{Id: 1},
-				Email:    pointer.StringPtr(os.Getenv("API_AUTH_EMAIL")),
-				Password: pointer.StringPtr(os.Getenv("API_AUTH_PASSWORD")),
-				RWMutex:  new(sync.RWMutex),
-			},
-		},
-		RWMutex: new(sync.RWMutex),
-	}
+        BaseAuthenticator: &go_saas_authenticator_basic.Authenticator{
+            Realm:       "auth",
+            Key:         os.Getenv("JWT_KEY"),
+            Timeout:     time.Hour,
+            MaxRefresh:  time.Hour,
+            IdentityKey: "id",
+            RWMutex:     new(sync.RWMutex),
+        },
+        Users: []*go_saas_model.User{
+            {
+            Model:    go_saas_model.Model{Id: 1},
+            Email:    pointer.StringPtr(os.Getenv("API_AUTH_EMAIL")),
+            Password: pointer.StringPtr(os.Getenv("API_AUTH_PASSWORD")),
+            RWMutex:  new(sync.RWMutex),
+            },
+        },
+        RWMutex: new(sync.RWMutex),
+    }
 }
 ```
