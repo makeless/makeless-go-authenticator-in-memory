@@ -59,3 +59,11 @@ func (authenticator *Authenticator) UnauthorizedHandler(c *gin.Context, code int
 func (authenticator *Authenticator) GetAuthUserId(c *gin.Context) uint {
 	return authenticator.GetBaseAuthenticator().GetAuthUserId(c)
 }
+
+func (authenticator *Authenticator) GetAuthEmail(c *gin.Context) string {
+	return authenticator.GetBaseAuthenticator().GetAuthEmail(c)
+}
+
+func (authenticator *Authenticator) GetAuthEmailVerification(c *gin.Context) bool {
+	return authenticator.GetBaseAuthenticator().GetAuthEmailVerification(c)
+}
