@@ -1,7 +1,8 @@
-# go-saas-authenticator-in-memory
-Go SaaS Framework - Golang In-Memory Authenticator Implementation
+# Makeless - Authenticator In-Memory
 
-[![Build Status](https://ci.loeffel.io/api/badges/go-saas/go-saas-authenticator-in-memory/status.svg)](https://ci.loeffel.io/go-saas/go-saas-authenticator-in-memory)
+Makeless - SaaS Framework - Golang In-Memory Authenticator Implementation
+
+[![Build Status](https://ci.loeffel.io/api/badges/makeless/makeless-go-authenticator-in-memory/status.svg)](https://ci.loeffel.io/makeless/makeless-go-authenticator-in-memory)
 
 ```go
 package main
@@ -10,17 +11,17 @@ import (
     "time"
     "os"
     "sync"
-    "github.com/go-saas/go-saas-authenticator-in-memory"
-    "github.com/go-saas/go-saas/authenticator/basic"
-    "github.com/go-saas/go-saas/model"
+    "github.com/makeless/makeless-go-authenticator-in-memory"
+    "github.com/makeless/makeless-go/authenticator/basic"
+    "github.com/makeless/makeless-go/model"
 )
 
 func main() {
     email := os.Getenv("AUTH_EMAIL")
     password := os.Getenv("AUTH_PASSWORD")
 
-    authenticator := &go_saas_authenticator_in_memory.Authenticator{
-        BaseAuthenticator: &go_saas_authenticator_basic.Authenticator{
+    authenticator := &makeless_go_authenticator_in_memory.Authenticator{
+        BaseAuthenticator: &makeless_go_authenticator_basic.Authenticator{
             Realm:       "auth",
             Key:         os.Getenv("JWT_KEY"),
             Timeout:     time.Hour,
@@ -28,9 +29,9 @@ func main() {
             IdentityKey: "id",
             RWMutex:     new(sync.RWMutex),
         },
-        Users: []*go_saas_model.User{
+        Users: []*makeless_go_model.User{
             {
-                Model:    go_saas_model.Model{Id: 1},
+                Model:    makeless_go_model.Model{Id: 1},
                 Email:    &email,
                 Password: &password,
                 RWMutex:  new(sync.RWMutex),

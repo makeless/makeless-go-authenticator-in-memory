@@ -1,4 +1,4 @@
-package go_saas_authenticator_in_memory
+package makeless_go_authenticator_in_memory
 
 import (
 	"sync"
@@ -6,26 +6,26 @@ import (
 
 	"github.com/appleboy/gin-jwt/v2"
 	"github.com/gin-gonic/gin"
-	"github.com/go-saas/go-saas/authenticator"
-	"github.com/go-saas/go-saas/model"
-	"github.com/go-saas/go-saas/struct"
+	"github.com/makeless/makeless-go/authenticator"
+	"github.com/makeless/makeless-go/model"
+	"github.com/makeless/makeless-go/struct"
 )
 
 type Authenticator struct {
-	BaseAuthenticator go_saas_authenticator.Authenticator
-	Users             []*go_saas_model.User
+	BaseAuthenticator makeless_go_authenticator.Authenticator
+	Users             []*makeless_go_model.User
 
 	*sync.RWMutex
 }
 
-func (authenticator *Authenticator) GetBaseAuthenticator() go_saas_authenticator.Authenticator {
+func (authenticator *Authenticator) GetBaseAuthenticator() makeless_go_authenticator.Authenticator {
 	authenticator.RLock()
 	defer authenticator.RUnlock()
 
 	return authenticator.BaseAuthenticator
 }
 
-func (authenticator *Authenticator) GetUsers() []*go_saas_model.User {
+func (authenticator *Authenticator) GetUsers() []*makeless_go_model.User {
 	authenticator.RLock()
 	defer authenticator.RUnlock()
 

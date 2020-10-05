@@ -1,11 +1,11 @@
-package go_saas_authenticator_in_memory
+package makeless_go_authenticator_in_memory
 
 import (
 	"time"
 
 	"github.com/appleboy/gin-jwt/v2"
 	"github.com/gin-gonic/gin"
-	"github.com/go-saas/go-saas/security"
+	"github.com/makeless/makeless-go/security"
 )
 
 func (authenticator *Authenticator) SetMiddleware(middleware *jwt.GinJWTMiddleware) {
@@ -16,7 +16,7 @@ func (authenticator *Authenticator) GetMiddleware() *jwt.GinJWTMiddleware {
 	return authenticator.GetBaseAuthenticator().GetMiddleware()
 }
 
-func (authenticator *Authenticator) GetSecurity() go_saas_security.Security {
+func (authenticator *Authenticator) GetSecurity() makeless_go_security.Security {
 	return nil
 }
 
