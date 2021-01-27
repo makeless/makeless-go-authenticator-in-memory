@@ -52,24 +52,24 @@ func (authenticator *Authenticator) AuthenticatorHandler(c *gin.Context) (interf
 
 func (authenticator *Authenticator) CreateMiddleware() error {
 	middlware, err := jwt.New(&jwt.GinJWTMiddleware{
-		Realm:           authenticator.GetBaseAuthenticator().GetRealm(),
-		Key:             authenticator.GetBaseAuthenticator().GetKey(),
-		Timeout:         authenticator.GetBaseAuthenticator().GetTimeout(),
-		MaxRefresh:      authenticator.GetBaseAuthenticator().GetMaxRefresh(),
-		IdentityKey:     authenticator.GetBaseAuthenticator().GetIdentityKey(),
-		PayloadFunc:     authenticator.GetBaseAuthenticator().PayloadHandler,
-		IdentityHandler: authenticator.GetBaseAuthenticator().IdentityHandler,
+		Realm:           authenticator.GetRealm(),
+		Key:             authenticator.GetKey(),
+		Timeout:         authenticator.GetTimeout(),
+		MaxRefresh:      authenticator.GetMaxRefresh(),
+		IdentityKey:     authenticator.GetIdentityKey(),
+		PayloadFunc:     authenticator.PayloadHandler,
+		IdentityHandler: authenticator.IdentityHandler,
 		Authenticator:   authenticator.AuthenticatorHandler,
-		Authorizator:    authenticator.GetBaseAuthenticator().AuthorizatorHandler,
-		Unauthorized:    authenticator.GetBaseAuthenticator().UnauthorizedHandler,
+		Authorizator:    authenticator.AuthorizatorHandler,
+		Unauthorized:    authenticator.UnauthorizedHandler,
 		TimeFunc:        time.Now,
 		SendCookie:      true,
-		SecureCookie:    authenticator.GetBaseAuthenticator().GetSecureCookie(), //non HTTPS dev environments
+		SecureCookie:    authenticator.GetSecureCookie(), //non HTTPS dev environments
 		CookieHTTPOnly:  true,
 		CookieName:      "jwt",
 		TokenLookup:     "cookie:jwt",
-		CookieDomain:    authenticator.GetBaseAuthenticator().GetCookieDomain(),
-		CookieSameSite:  authenticator.GetBaseAuthenticator().GetCookieSameSite(),
+		CookieDomain:    authenticator.GetCookieDomain(),
+		CookieSameSite:  authenticator.GetCookieSameSite(),
 	})
 
 	if err != nil {
