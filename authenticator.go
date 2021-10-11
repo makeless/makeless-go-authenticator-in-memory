@@ -12,20 +12,13 @@ import (
 )
 
 type Authenticator struct {
-	BaseAuthenticator makeless_go_authenticator.Authenticator
-	Users             []*makeless_go_model.User
+	makeless_go_authenticator.Authenticator
+	Users []*makeless_go_model.User
 
 	*sync.RWMutex
 }
 
-func (authenticator *Authenticator) GetBaseAuthenticator() makeless_go_authenticator.Authenticator {
-	authenticator.RLock()
-	defer authenticator.RUnlock()
-
-	return authenticator.BaseAuthenticator
-}
-
-func (authenticator *Authenticator) GetUsers() []*makeless_go_model.User {
+func (authenticator *Authenticator) getUsers() []*makeless_go_model.User {
 	authenticator.RLock()
 	defer authenticator.RUnlock()
 
@@ -41,7 +34,7 @@ func (authenticator *Authenticator) AuthenticatorHandler(c *gin.Context) (interf
 		return nil, err
 	}
 
-	for _, user := range authenticator.GetUsers() {
+	for _, user := range authenticator.getUsers() {
 		if *login.GetEmail() == *user.GetEmail() && *login.GetPassword() == *user.GetPassword() {
 			return user, nil
 		}

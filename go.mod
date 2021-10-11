@@ -7,7 +7,7 @@ require (
 	github.com/gin-gonic/gin v1.7.4
 	github.com/makeless/makeless-go v1.0.0-beta.32
 	golang.org/x/sys v0.0.0-20211007075335-d3039528d8ac // indirect
-	gorm.io/gorm v1.21.15 // indirect
+	gorm.io/gorm v1.21.16 // indirect
 )
 
 require (
